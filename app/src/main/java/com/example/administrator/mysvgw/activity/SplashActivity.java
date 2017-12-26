@@ -11,12 +11,12 @@ import android.widget.ImageView;
 
 import com.example.administrator.mysvgw.BaseActivity;
 import com.example.administrator.mysvgw.R;
+import com.example.administrator.mysvgw.utils.PreShareUtils;
 
 public class SplashActivity extends BaseActivity {
 
     ImageView iv_splash;
     //使用SharedPreferences来记录程序的使用次数
-    SharedPreferences sharedPreferences;
     private boolean isFirst;
     @Override
     protected int getContetView() {
@@ -26,9 +26,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initViews() {
         iv_splash = getView(R.id.iv_splash);
-        sharedPreferences = getSharedPreferences("isFirst", MODE_PRIVATE);
-        isFirst = sharedPreferences.getBoolean("isFirst",false);
-        Log.d("whq","==false=="+isFirst);
+        isFirst = PreShareUtils.getBoolean(mContext,"isFirst", false);
     }
 
     @Override
@@ -56,10 +54,8 @@ public class SplashActivity extends BaseActivity {
     private void jumpNext(){
         if(!isFirst){
             startActivity(new Intent(mContext, GuildActivity.class));
-            SharedPreferences.Editor editor = sharedPreferences.edit();
             //存入数据
-            editor.putBoolean("isFirst",true);
-            editor.commit();
+            PreShareUtils.putBoolean(mContext, "isFirst", true);
             finish();
         }else{
             startActivity(new Intent(mContext, MainActivity.class));

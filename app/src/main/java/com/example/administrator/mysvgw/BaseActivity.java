@@ -3,6 +3,8 @@ package com.example.administrator.mysvgw;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.SparseArray;
 import android.view.View;
 
 import butterknife.ButterKnife;
@@ -20,7 +22,7 @@ import butterknife.Unbinder;
  * unbinder.unbind();
  */
 
-public abstract class BaseActivity extends Activity implements View.OnClickListener{
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener{
     Unbinder unbinder;
     protected Context mContext;
     protected  abstract int getContetView();
@@ -28,10 +30,12 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected abstract void initData();
     public abstract void initListener();
     public abstract void proClick(View view);
+    private SparseArray<View> mViews;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         unbinder = ButterKnife.bind(this);
+        mViews = new SparseArray<>();
         setContentView(getContetView());
         initViews();
         initData();
@@ -54,12 +58,13 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
      */
     @SuppressWarnings("unchecked")
     protected <E extends View> E getView(int viewId){
-        try {
-           return findViewById(viewId);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
+        E view = (E) mViews.get(viewId);
+
+        if (view == null) {
+            view = (E) findViewById(viewId);
+            mViews.put(viewId, view);
         }
+        return view;
 
     }
 
