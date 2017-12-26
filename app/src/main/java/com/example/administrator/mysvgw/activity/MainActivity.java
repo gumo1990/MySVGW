@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initViews() {
          bind = ButterKnife.bind(this);
-        fragmentManager =
+     //   fragmentManager =
     }
 
     @Override
