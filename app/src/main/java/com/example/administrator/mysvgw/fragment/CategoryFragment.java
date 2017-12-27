@@ -3,6 +3,7 @@ package com.example.administrator.mysvgw.fragment;
 import android.view.View;
 
 import com.example.administrator.mysvgw.BaseFragment;
+import com.example.administrator.mysvgw.R;
 
 /**
  * Created by whq on 2017/12/26.
@@ -11,7 +12,7 @@ import com.example.administrator.mysvgw.BaseFragment;
 public class CategoryFragment extends BaseFragment{
     @Override
     protected int getContentView() {
-        return 0;
+        return R.layout.fragment_category;
     }
 
     @Override
@@ -33,4 +34,5 @@ public class CategoryFragment extends BaseFragment{
     public void processClick(View view) {
 
     }
+
 }
