@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white1">
+    android:background="@color/white1"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/rl_home_title"
         android:layout_width="match_parent"
@@ -74,15 +75,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="18sp"
-            android:text="标题" />
+            android:text="标题"
+            android:textSize="18sp" />
 
         <View
-            android:id="@+id/vXian"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_alignParentBottom="true"
             android:background="@color/glary9" />
-        />
     </RelativeLayout>
+
+    <com.example.administrator.mysvgw.views.MyJsBridgeWebView
+        android:id="@+id/webviewID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

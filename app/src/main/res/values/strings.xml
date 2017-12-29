@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">四维购物</string>
+    <string name="dialog_process">加载中…</string>
 </resources>

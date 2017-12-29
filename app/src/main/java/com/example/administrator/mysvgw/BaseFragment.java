@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 /**
@@ -16,7 +18,7 @@ import android.widget.FrameLayout;
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener{
     public View convertView;
-
+    private Unbinder unbinder;
     protected abstract int getContentView();
     public abstract void initViews();
 
@@ -26,12 +28,15 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public abstract void processClick(View view);
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         if(convertView == null){
             convertView = inflater.inflate(getContentView(), container, false);
         }
+        unbinder = ButterKnife.bind(this, convertView);
         ViewGroup parent = (ViewGroup) convertView.getParent();
         if (parent != null) {
             parent.removeView(convertView);
@@ -45,5 +50,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View view) {
         processClick(view);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

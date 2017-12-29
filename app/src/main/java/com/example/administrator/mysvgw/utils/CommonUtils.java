@@ -1,9 +1,14 @@
 package com.example.administrator.mysvgw.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.administrator.mysvgw.MyApplication;
@@ -16,6 +21,16 @@ public class CommonUtils {
 
     private static final  String PREF_NAME = "mysvgw";
     private static SharedPreferences sp;
+
+    /**
+     * 空判断
+     */
+    public static boolean isEmpty(CharSequence str) {
+        if (str == "" || str == null || str.length() == 0 || "null".equalsIgnoreCase(str.toString()))
+            return true;
+        else
+            return false;
+    }
     /**
      * 获取渠道名
      */
@@ -101,10 +116,52 @@ public class CommonUtils {
        firstTime = secondTiem;
     }
 
+    //当前登录状态
+    public static boolean isLogin() {
+        boolean result = false;
+        String loginKey = MyApplication.getInstance().getLoginKey();
+        if (!isEmpty(loginKey)) {
+            return true;
+        }
+
+        return result;
+    }
 
 
+    /**
+     * 是否点击的是EditText
+     */
+    public static boolean isShouldHideInput(View view, MotionEvent event) {
+        if (view != null && (view instanceof EditText)) {
+            int[] leftTop = {0, 0};
+            //获取输入框当前的location
+            view.getLocationInWindow(leftTop);
+            ;
+            int left = leftTop[0];
+            int top = leftTop[1];
+            int bottom = top + view.getHeight();
+            int right = left + view.getWidth();
+            if (event.getX() > left && event.getX() < right && event.getY() > top
+                    && event.getY() < bottom) {
+                //点击的是输入框，保留EditText的事件
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * 关闭软键盘
+     */
 
-
+    public static void hintSoftKeyboard(Activity context) {
+        View view = context.getWindow().peekDecorView();
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 
 
 

@@ -12,7 +12,7 @@ import com.example.administrator.mysvgw.R;
 import com.example.administrator.mysvgw.fragment.CarFragment;
 import com.example.administrator.mysvgw.fragment.CategoryFragment;
 import com.example.administrator.mysvgw.fragment.HomeFragment;
-import com.example.administrator.mysvgw.fragment.MyFragment;
+import com.example.administrator.mysvgw.fragment.PersonFragment;
 import com.example.administrator.mysvgw.fragment.VideoFragment;
 import com.example.administrator.mysvgw.utils.CommonUtils;
 
@@ -34,7 +34,6 @@ import butterknife.Unbinder;
 
 public class MainActivity extends BaseActivity {
 
-    Unbinder bind;
 
     private FragmentManager fragmentManager;
     final int HOME = 1;
@@ -48,7 +47,7 @@ public class MainActivity extends BaseActivity {
     CategoryFragment categoryFragment;
     VideoFragment videoFragment;
     CarFragment carFragment;
-    MyFragment myFragment;
+    PersonFragment myFragment;
     @BindView(R.id.rb_home)
     RadioButton rb_home;
 
@@ -59,7 +58,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        bind = ButterKnife.bind(this);
+
         fragmentManager = getSupportFragmentManager();
     }
 
@@ -107,7 +106,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case MYPERSON:
                 if (myFragment == null) {
-                    myFragment = new MyFragment();
+                    myFragment = new PersonFragment();
                     transaction.add(R.id.fl_main, myFragment);
                 } else {
                     transaction.show(myFragment);
@@ -170,7 +169,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        bind.unbind();
+
     }
 
     @Override

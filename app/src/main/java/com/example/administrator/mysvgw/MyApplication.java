@@ -4,6 +4,7 @@ import android.app.Application;
 import android.icu.util.TimeUnit;
 
 import com.example.administrator.mysvgw.utils.ApiManager;
+import com.example.administrator.mysvgw.utils.CommonUtils;
 import com.kili.okhttp.OkHttpUtils;
 
 /**
@@ -29,6 +30,18 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         OkHttpUtils.getInstance().addCommonHeaders(ApiManager.simpleHeader).setConnectTimeout(100000, java.util.concurrent.TimeUnit.MILLISECONDS);
+    }
+
+    public void setLoginKey(String loginKey) {
+        CommonUtils.putString(this, "loginKey", loginKey);
+    }
+
+    public String getLoginKey() {
+        String loginKey = CommonUtils.getString(this, "loginKey","");
+        return loginKey;
+    }
+    public void logout() {
+        setLoginKey("");
     }
 
 

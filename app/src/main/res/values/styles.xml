@@ -5,7 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item><!--action默认颜色-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item><!--系统状态栏颜色-->
-        <item name="colorAccent">@color/colorAccent</item><!--CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
+        <item name="colorAccent">@color/colorAccent
+        </item><!--CheckBox，RadioButton，SwitchCompat等一般控件的选中效果默认采用该颜色-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -17,6 +18,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>
+
     <style name="main_tab">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">match_parent</item>
@@ -27,5 +29,69 @@
         <item name="android:paddingTop">5dp</item>
         <item name="android:textColor">@drawable/textcolor</item>
 
+    </style>
+    <!--订单button-->
+    <style name="PersonalCenterOrderStateStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">3dp</item>
+        <item name="android:textColor">@color/glary</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+    <!--订单button中的number-->
+    <style name="PersonalCenterOrderNumStyle">
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minWidth">8dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:paddingLeft">3dp</item>
+        <item name="android:paddingRight">3dp</item>
+        <item name="android:maxLength">2</item>
+        <item name="android:text"></item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_height">8dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:background">@drawable/shape_round_order_num</item>
+    </style>
+    <!--宝贝等收藏条目-->
+    <style name="PersonalCenterItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="PersonalCenterTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:textColor">@color/glary9</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+    <!--宝贝等收藏条目-->
+    <!--右侧箭头-->
+    <style name="PersonCenterArrowStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:src">@drawable/ic_more_arrow</item>
+    </style>
+    <style name="loadingDialogStyle" parent="@android:style/Theme.Holo.Light" >
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 对话框是否有遮盖 -->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
     </style>
 </resources>
