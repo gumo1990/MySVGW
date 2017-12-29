@@ -17,6 +17,7 @@ import static com.example.administrator.mysvgw.utils.CommonUtils.isLogin;
  */
 
 public class PersonFragment extends BaseFragment {
+
     @Override
     protected int getContentView() {
         return R.layout.fragment_my;
@@ -37,18 +38,29 @@ public class PersonFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.ll_personal_login})
+    @OnClick({R.id.ll_personal_login, R.id.iv_personal_settings})
     @Override
     public void processClick(View view) {
         switch (view.getId()) {
             case R.id.ll_personal_login:
                 if (isLogin()) {
-                //    enterImgSelector();
-                    break;
+                    //如果登陆了，就去设置头像
+                    enterImgSelector();
+                    return;
                 }
                 startActivity(new Intent(getContext(), LoginActivity.class));
+                break;
+            case R.id.iv_personal_settings:
+
+                break;
             default:
                 break;
         }
+    }
+    /**
+     * 选择头像
+     */
+    private void  enterImgSelector(){
+
     }
 }

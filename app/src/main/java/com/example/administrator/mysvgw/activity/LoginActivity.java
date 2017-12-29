@@ -78,7 +78,6 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.bt_login_ok:
                 //登陆
-                CommonUtils.toast(mContext,"111！");
                 login();
                 break;
             default:
@@ -109,7 +108,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void login(){
-        CommonUtils.toast(mContext,"3333！");
         String name  = et_login_name.getText().toString().trim();
         String password = et_login_pwd.getText().toString().trim();
         if(CommonUtils.isEmpty(name)){

@@ -2,6 +2,7 @@ package com.example.administrator.mysvgw.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.administrator.mysvgw.MyApplication;
+import com.example.administrator.mysvgw.activity.LoginActivity;
 
 /**
  * Created by whq on 2017/12/25.
@@ -163,7 +165,19 @@ public class CommonUtils {
         }
     }
 
-
+    /**
+     * 未登陆，跳转登陆
+     */
+public static boolean checkLogin(Activity activity){
+    boolean result = false;
+    String loginKey = MyApplication.getInstance().getLoginKey();
+    if(!isEmpty(loginKey)){
+        return true;
+    }else{
+       activity.startActivity(new Intent(activity, LoginActivity.class));
+    }
+    return result;
+}
 
 
 
