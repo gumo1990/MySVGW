@@ -6,7 +6,7 @@ import android.view.View;
 import com.example.administrator.mysvgw.BaseFragment;
 import com.example.administrator.mysvgw.R;
 import com.example.administrator.mysvgw.activity.LoginActivity;
-import com.example.administrator.mysvgw.utils.CommonUtils;
+import com.example.administrator.mysvgw.activity.SettingActivity;
 
 import butterknife.OnClick;
 
@@ -25,7 +25,6 @@ public class PersonFragment extends BaseFragment {
 
     @Override
     public void initViews() {
-
     }
 
     @Override
@@ -51,16 +50,19 @@ public class PersonFragment extends BaseFragment {
                 startActivity(new Intent(getContext(), LoginActivity.class));
                 break;
             case R.id.iv_personal_settings:
-
+                //设置页面
+                startActivity(new Intent(getContext(), SettingActivity.class));
                 break;
             default:
                 break;
         }
     }
+
+
     /**
      * 选择头像
      */
-    private void  enterImgSelector(){
+    private void enterImgSelector() {
 
     }
 }

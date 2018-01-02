@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/topbar"/>
+
+
+    <TextView
+        android:id="@+id/tv_person_new"
+        style="@style/SettingsItemStyle"
+        android:drawableLeft="@drawable/ic_settings_profile"
+        android:text="基本信息" />
+
+    <include layout="@layout/view_divider_line" />
+
+    <TextView
+        android:id="@+id/tv_person_chp"
+        style="@style/SettingsItemStyle"
+        android:drawableLeft="@drawable/ic_settings_change_pwd"
+        android:text="修改密码" />
+
+    <include layout="@layout/view_divider_line" />
+
+    <TextView
+        android:id="@+id/tv_person_chem"
+        style="@style/SettingsItemStyle"
+        android:drawableLeft="@drawable/ic_settings_change_email"
+        android:text="修改电子邮箱" />
+
+    <include layout="@layout/view_divider_line" />
+
+    <TextView
+        android:id="@+id/tv_person_chphone"
+        style="@style/SettingsItemStyle"
+        android:drawableLeft="@drawable/ic_settings_change_phone"
+        android:text="修改手机号码" />
+
+    <include layout="@layout/view_divider_line" />
+    <TextView
+        android:id="@+id/tv_settings_logout"
+        android:text="退出当前用户"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/white"
+        android:background="@drawable/selector_settings_logout" />
+</LinearLayout>

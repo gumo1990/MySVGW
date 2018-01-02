@@ -3,13 +3,14 @@ package com.example.administrator.mysvgw.fragment;
 import android.view.View;
 
 import com.example.administrator.mysvgw.BaseFragment;
+import com.example.administrator.mysvgw.BaseTopBarFragment;
 import com.example.administrator.mysvgw.R;
 
 /**
  * Created by whq on 2017/12/26.
  */
 
-public class VideoFragment extends BaseFragment{
+public class VideoFragment extends BaseTopBarFragment{
     @Override
     protected int getContentView() {
         return R.layout.fragment_video;

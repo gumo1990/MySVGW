@@ -19,7 +19,6 @@ import com.kili.okhttp.OkHttpUtils;
 
 import java.util.HashMap;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Request;
@@ -128,7 +127,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onBefore(Request request) {
                 super.onBefore(request);
-                weixinDialogInit(getString(R.string.dialog_process));
+                loadingDialogs(getString(R.string.dialog_process));
             }
 
             @Override
@@ -140,7 +139,7 @@ public class LoginActivity extends BaseActivity {
             public void onResponse(HttpResult<UserBean> response) {
                 if(response.isSuccess()){
                     setResult(RESULT_OK);
-                    MyApplication.getInstance().setLoginKey(response.data.token);
+                    MyApplication.getInstance().setLoginKey(response.data.getToken());
                     CommonUtils.hintSoftKeyboard(LoginActivity.this);
                     finish();
                 }
@@ -152,7 +151,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onAfter() {
                 super.onAfter();
-                cancelWeiXinDialog();
+                cancelLoadingDialog();
             }
         });
 

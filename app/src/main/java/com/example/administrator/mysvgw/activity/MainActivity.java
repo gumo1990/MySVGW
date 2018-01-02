@@ -1,10 +1,12 @@
 package com.example.administrator.mysvgw.activity;
 
+import android.os.Build;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RadioButton;
 
 import com.example.administrator.mysvgw.BaseActivity;
@@ -60,6 +62,7 @@ public class MainActivity extends BaseActivity {
     protected void initViews() {
 
         fragmentManager = getSupportFragmentManager();
+        barColor();
     }
 
     @Override
@@ -199,6 +202,15 @@ public class MainActivity extends BaseActivity {
             }, 2000);
         } else {
             finish();
+        }
+    }
+    /**
+     * 状态栏透明色
+     */
+    private void barColor(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); //透明导航栏
+            //    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
 }

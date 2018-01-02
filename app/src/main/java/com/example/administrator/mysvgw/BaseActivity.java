@@ -1,11 +1,16 @@
 package com.example.administrator.mysvgw;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.example.administrator.mysvgw.utils.CommonUtils;
 import com.example.administrator.mysvgw.views.LoadingDialog;
 
 import butterknife.ButterKnife;
@@ -69,11 +74,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
     boolean isCancelable = false;
 
-    public void setWeixinCancelable(boolean isCancelable) {
+    public void setLoadingDialog(boolean isCancelable) {
         this.isCancelable = isCancelable;
     }
 
-    public void weixinDialogInit(final String msg) {
+    public void loadingDialogs(final String msg) {
         // isLoading =true;
         runOnUiThread(new Runnable() {
             @Override
@@ -92,7 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     }
 
-    public void cancelWeiXinDialog() {
+    public void cancelLoadingDialog() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {//IllegalArgumentException
@@ -113,5 +118,35 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             //如果activity还在执行,取消绑定，防止泄露
             bind.unbind();
         }
+    }
+    /**
+     * 给单个Activity的顶部的View加宽，颜色通ActionBar，且不可修改
+     * 有局限性，适合顶部有actionbar，非图片的Activity
+     */
+
+    protected void setImmerseLayout(View view, boolean type){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            Window window = getWindow();
+           /* window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);*/
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);底部按钮透明设置
+
+            if(type){
+                int statusBarHeight = getStatusBarHeight(this.getBaseContext());
+                ViewGroup.LayoutParams lp = view.getLayoutParams();
+                lp.height += statusBarHeight;
+                view.setLayoutParams(lp);
+                view.setPadding(0, statusBarHeight, 0, 0);
+            }
+        }
+    }
+    public static int getStatusBarHeight(Context context) {
+        int result = 0;
+        int resourceid = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceid > 0) {
+            result = context.getResources().getDimensionPixelOffset(resourceid);
+        }
+        return result;
     }
 }

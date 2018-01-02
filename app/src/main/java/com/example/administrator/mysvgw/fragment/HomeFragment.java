@@ -1,6 +1,5 @@
 package com.example.administrator.mysvgw.fragment;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.administrator.mysvgw.BaseFragment;
+import com.example.administrator.mysvgw.BaseTopBarFragment;
 import com.example.administrator.mysvgw.R;
 import com.example.administrator.mysvgw.bean.JsBridgeParam;
 import com.example.administrator.mysvgw.utils.SystemHelper;
@@ -38,7 +37,7 @@ import static android.view.View.VISIBLE;
  * Created by whq on 2017/12/26.
  */
 
-public class HomeFragment extends BaseFragment{
+public class HomeFragment extends BaseTopBarFragment {
 
     @BindView(R.id.webviewID)
     MyJsBridgeWebView mWebView;
@@ -60,6 +59,7 @@ public class HomeFragment extends BaseFragment{
     private boolean isSecond;//是否是二级页面
     String act;
     String stype = "0";
+
     @Override
     protected int getContentView() {
         return R.layout.fragment_home;
@@ -154,7 +154,7 @@ public class HomeFragment extends BaseFragment{
     @OnClick({R.id.iv_left})
     @Override
     public void processClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iv_left:
                 //二级页面返回
                 if (act != null) {
@@ -168,9 +168,11 @@ public class HomeFragment extends BaseFragment{
                 break;
         }
     }
+
     private void loadWebUrl() {
         mWebView.loadUrl(url.trim(), headMap);
     }
+
     /**
      * webview加载状态
      */
@@ -180,10 +182,10 @@ public class HomeFragment extends BaseFragment{
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             isSecond = mWebView.canGoBack();
-         //   hidMenu();
+            //   hidMenu();
             if (newProgress == 100) {
                 mProgressBar.setVisibility(GONE);
-            //    getShareUrl(mWebView.getUrl());
+                //    getShareUrl(mWebView.getUrl());
                 if (act != null) {
                     if ("0".equals(stype)) {
                         showTopTitle(true);
@@ -214,6 +216,7 @@ public class HomeFragment extends BaseFragment{
 
         }
     }
+
     /**
      * 首页和二级子页面展示头
      *

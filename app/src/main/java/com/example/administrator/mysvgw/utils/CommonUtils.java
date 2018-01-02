@@ -1,18 +1,23 @@
 package com.example.administrator.mysvgw.utils;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.administrator.mysvgw.MyApplication;
+import com.example.administrator.mysvgw.SystemBarTintManager;
 import com.example.administrator.mysvgw.activity.LoginActivity;
 
 /**
@@ -21,7 +26,7 @@ import com.example.administrator.mysvgw.activity.LoginActivity;
 
 public class CommonUtils {
 
-    private static final  String PREF_NAME = "mysvgw";
+    private static final String PREF_NAME = "mysvgw";
     private static SharedPreferences sp;
 
     /**
@@ -33,10 +38,11 @@ public class CommonUtils {
         else
             return false;
     }
+
     /**
      * 获取渠道名
      */
-    public static String getChannel(){
+    public static String getChannel() {
         String ret = "";
         try {
             ret = MyApplication.getInstance().getPackageManager()
@@ -45,7 +51,7 @@ public class CommonUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.d("whq" ,"渠道名称--"+ ret);
+        Log.d("whq", "渠道名称--" + ret);
         return ret;
     }
 
@@ -64,61 +70,64 @@ public class CommonUtils {
 
     /**
      * sharepreference存储的是手机app内存中
+     *
      * @param context
      * @param key
      * @param value
      */
-    public static void putBoolean(Context context, String key, boolean value){
-        if(sp == null){
+    public static void putBoolean(Context context, String key, boolean value) {
+        if (sp == null) {
             sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         }
         sp.edit().putBoolean(key, value).commit();
     }
 
-    public static boolean getBoolean(Context context, String key, boolean devalue){
-        if(sp == null){
+    public static boolean getBoolean(Context context, String key, boolean devalue) {
+        if (sp == null) {
             sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         }
-        return sp.getBoolean(key,devalue);
-    }
-    public static void putString(Context context, String key, String value){
-        if(sp == null){
-            sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        }
-        sp.edit().putString(key,value).commit();
+        return sp.getBoolean(key, devalue);
     }
 
-    public static String getString(Context context, String key, String devalue){
-        if(sp == null){
+    public static void putString(Context context, String key, String value) {
+        if (sp == null) {
+            sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        }
+        sp.edit().putString(key, value).commit();
+    }
+
+    public static String getString(Context context, String key, String devalue) {
+        if (sp == null) {
             sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         }
         return sp.getString(key, devalue);
     }
-    public static void toast(Context context, String msg){
+
+    public static void toast(Context context, String msg) {
         String oldMsg = null;
         Toast toast = null;
         long firstTime = 0;
         long secondTiem = 0;
-        if(toast == null){
+        if (toast == null) {
             toast = Toast.makeText(context, msg, Toast.LENGTH_LONG);
             toast.show();
             firstTime = System.currentTimeMillis();
-        }else{
+        } else {
             secondTiem = System.currentTimeMillis();
-            if(msg.equals(oldMsg)){
-                if(secondTiem - firstTime > Toast.LENGTH_LONG){
+            if (msg.equals(oldMsg)) {
+                if (secondTiem - firstTime > Toast.LENGTH_LONG) {
                     toast.show();
                 }
-            }else{
+            } else {
                 oldMsg = msg;
                 toast.setText(msg);
                 toast.show();
             }
         }
-       firstTime = secondTiem;
+        firstTime = secondTiem;
     }
 
-    //当前登录状态
+    //当前登录状态,true--已登录
     public static boolean isLogin() {
         boolean result = false;
         String loginKey = MyApplication.getInstance().getLoginKey();
@@ -153,6 +162,7 @@ public class CommonUtils {
         }
         return false;
     }
+
     /**
      * 关闭软键盘
      */
@@ -168,23 +178,46 @@ public class CommonUtils {
     /**
      * 未登陆，跳转登陆
      */
-public static boolean checkLogin(Activity activity){
-    boolean result = false;
-    String loginKey = MyApplication.getInstance().getLoginKey();
-    if(!isEmpty(loginKey)){
-        return true;
-    }else{
-       activity.startActivity(new Intent(activity, LoginActivity.class));
+    public static boolean checkLogin(Activity activity) {
+        boolean result = false;
+        String loginKey = MyApplication.getInstance().getLoginKey();
+        if (!isEmpty(loginKey)) {
+            return true;
+        } else {
+            activity.startActivity(new Intent(activity, LoginActivity.class));
+        }
+        return result;
     }
-    return result;
-}
+
+    /**
+     * 修改系统状态栏颜色，需要在xml的根布局添加
+     * android:fitsSystemWindows="true",否则会遮挡顶部
+     * @param activity
+     * @param color
+     */
+    public static void myStatusBar(Activity activity, int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(activity, true);
+            SystemBarTintManager systemBarTintManager = new SystemBarTintManager(activity);
+            systemBarTintManager.setStatusBarTintEnabled(true);
+            systemBarTintManager.setStatusBarTintResource(color);
+        }
+    }
 
 
+    @TargetApi(19)
+    private static void setTranslucentStatus(Activity activity, boolean type) {
+        Window window = activity.getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (type) {
+            params.flags |= bits;
 
-
-
-
-
+        } else {
+            params.flags &= ~bits;
+        }
+        window.setAttributes(params);
+    }
 
 
 }

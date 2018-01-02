@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/topbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_base"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="姓名" />
+
+        <EditText
+            android:id="@+id/et_person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@null"
+            android:ellipsize="end"
+            android:gravity="right|center"
+            android:hint="请输入姓名"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <include layout="@layout/view_divider_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="性别" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_person_man"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:checked="true"
+                android:text="男" />
+
+            <RadioButton
+                android:id="@+id/rb_person_woman"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="女" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <include layout="@layout/view_divider_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="出生日期" />
+
+        <TextView
+            android:id="@+id/tv_perosn_data"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:ellipsize="end"
+            android:gravity="right|center"
+            android:hint="请选择出生日期"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <include layout="@layout/view_divider_line" />
+
+    <TextView
+        android:id="@+id/tv_person_save"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/selector_settings_logout"
+        android:gravity="center"
+        android:text="保存修改"
+        android:textColor="@color/white" />
+</LinearLayout>

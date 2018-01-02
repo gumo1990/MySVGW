@@ -58,32 +58,72 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.GuildActivity"
             android:configChanges="screenSize|orientation|keyboardHidden|navigation"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="screenSize|orientation|keyboardHidden|navigation"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activity.LoginActivity"
             android:configChanges="screenSize|orientation|keyboardHidden|navigation"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activity.RegisterActivity"
             android:configChanges="screenSize|orientation|keyboardHidden|navigation"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".activity.SettingActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden|navigation"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activity.ForgotPasswordActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden|navigation"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".activity.PersonBaseActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden|navigation"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden|navigation"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".activity.ChangeEmailActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden|navigation"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".activity.ChangePhomeActivity"
             android:configChanges="screenSize|orientation|keyboardHidden|navigation"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"

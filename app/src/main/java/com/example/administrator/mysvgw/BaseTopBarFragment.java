@@ -1,15 +1,12 @@
 package com.example.administrator.mysvgw;
 
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.FrameLayout;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -17,10 +14,9 @@ import butterknife.Unbinder;
 
 /**
  * Created by whq on 2017/12/26.
- * 不改变系统状态栏bar颜色
  */
 
-public abstract class BaseFragment extends Fragment implements View.OnClickListener{
+public abstract class BaseTopBarFragment extends Fragment implements View.OnClickListener{
     public ViewGroup convertView;
     private Unbinder unbinder;
     public View mStatusBarView;
@@ -47,6 +43,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         if (parent != null) {
             parent.removeView(convertView);
         }
+        addStatusBar();
         initViews();
         initListener();
         initData();
@@ -64,5 +61,34 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         unbinder.unbind();
     }
 
+    /**
+     * 添加一个View在bar顶部，适合Activity，
+     * 主要适合一个Activity中包含多个Fragment
+     * 在Fragment中设置mStatusBarView颜色
+     * 需要在父Activity中设置状态栏透明
+     */
+    private void addStatusBar(){
+        if(mStatusBarView == null){
+            mStatusBarView = new View(getContext());
+            int screenVidth = getResources().getDisplayMetrics().widthPixels;
+            int statusBarHeight = getStatusBarHeight(getActivity());
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(screenVidth,statusBarHeight);
+            mStatusBarView.setLayoutParams(params);
+            mStatusBarView.requestLayout();
+            if(convertView != null) {
+                convertView.addView(mStatusBarView, 0);
+            }
 
+        }
+    }
+
+    public static int getStatusBarHeight(Activity activity){
+        int statusBarHeight = 0;
+        if(activity != null){
+            int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
+            statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);
+
+        }
+        return statusBarHeight;
+    }
 }

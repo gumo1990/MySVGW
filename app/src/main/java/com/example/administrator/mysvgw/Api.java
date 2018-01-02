@@ -11,4 +11,9 @@ public class Api {
 
 
     public static final String URL_LOGIN = BASE_URL + "app.php/login"; //登录
+    public static final String URL_USER_BASE_INFO = BASE_URL + "app.php/user/userinfo";//用户基本信息
+    public static final String URL_USER_BASE_SAVEINFO = BASE_URL + "app.php/user/edituserinfo"; //编辑用户基本信息
+    public static final String URL_MODIFY_PWD = BASE_URL + "app.php/user/edituserpassword"; //修改密码
+    public static final String URL_MODIFY_EMAIL = BASE_URL + "app.php/user/edituseremail";//修改邮箱
+
 }

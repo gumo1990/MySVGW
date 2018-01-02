@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/topbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="当前密码:" />
+
+        <EditText
+            android:id="@+id/et_phone_pws"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/tv_phone"
+            android:background="@null"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <include layout="@layout/view_divider_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_np"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="新手机号:" />
+
+        <EditText
+            android:id="@+id/et_phone_new"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/tv_np"
+            android:background="@null"
+            android:hint="请输入手机号"
+            android:inputType="phone"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <include layout="@layout/view_divider_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_ma"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="新手机号:" />
+
+        <EditText
+            android:id="@+id/et_phone_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/tv_ma"
+            android:layout_toLeftOf="@+id/tv_phone_ma"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:inputType="phone"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/tv_phone_ma"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/selector_settings_logout"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="获取验证码"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <include layout="@layout/view_divider_line" />
+
+    <TextView
+        android:id="@+id/tv_phone_save"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/selector_settings_logout"
+        android:gravity="center"
+        android:text="保存修改"
+        android:textColor="@color/white" />
+</LinearLayout>
