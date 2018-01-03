@@ -1,5 +1,6 @@
 package com.example.administrator.mysvgw.activity;
 
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -110,5 +111,21 @@ public class ChangeEmailActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if(ev.getAction() == MotionEvent.ACTION_DOWN){
+            View view = getCurrentFocus();
+            if(CommonUtils.isShouldHideInput(view, ev)){
+                CommonUtils.hintSoftKeyboard(this);
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+        if(getWindow().superDispatchTouchEvent(ev)){
+            return true;
+        }
+
+        return onTouchEvent(ev);
     }
 }
