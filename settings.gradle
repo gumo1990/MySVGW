@@ -1,1 +1,1 @@
-include ':app', ':okhttputils', ':jsbridgelib'
+include ':app', ':okhttputils', ':jsbridgelib', ':imagepicker'

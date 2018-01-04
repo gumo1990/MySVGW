@@ -3,6 +3,7 @@ package com.example.administrator.mysvgw;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public ViewGroup convertView;
     private Unbinder unbinder;
     public View mStatusBarView;
+    public static Handler mHandler = new Handler();
 
     protected abstract int getContentView();
     public abstract void initViews();

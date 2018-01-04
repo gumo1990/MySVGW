@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:background="@android:color/transparent"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -12,7 +12,7 @@
         android:layout_height="120dp"
         android:background="@drawable/weixin_loading_bg"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ProgressBar
             android:id="@+id/progressBar1"
@@ -23,12 +23,11 @@
             android:background="@android:color/transparent" />
 
         <TextView
-            android:id="@+id/tv"
+            android:id="@+id/tv_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/white"
-             />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>

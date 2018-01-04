@@ -17,5 +17,9 @@ public class Api {
     public static final String URL_MODIFY_EMAIL = BASE_URL + "app.php/user/edituseremail";//修改邮箱
     public static final String URL_SEND_CODE = BASE_URL + "app.php/send"; //发验证码
     public static final String URL_MODIFY_PHONE = BASE_URL + "app.php/user/editusermobile"; //修改手机号
+    public static final String URL_USER_CENTER = BASE_URL + "app.php/user/useraccount"; //用户中心
+    public static final String URL_UPLOAD_AVATAR = BASE_WWW + "uploadforapp.php"; //上传头像
+    public static final String URL_CLASSIFY = BASE_URL + "app.php/classify/getclassify"; //分类
+
 
 }

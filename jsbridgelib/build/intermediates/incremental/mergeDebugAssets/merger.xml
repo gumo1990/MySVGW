@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="F:\MySVGW\jsbridgelib\src\main\assets"><file name="WebViewJavascriptBridge.js" path="F:\MySVGW\jsbridgelib\src\main\assets\WebViewJavascriptBridge.js"/></source><source path="F:\MySVGW\jsbridgelib\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="F:\MySVGW\jsbridgelib\src\debug\assets"/></dataSet></merger>

@@ -28,7 +28,7 @@ public class LoadingDialog extends ProgressDialog {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.loading_dialog);
-        tv = (TextView) this.findViewById(R.id.tv);
+        tv = (TextView) this.findViewById(R.id.tv_loading);
         tv.setText(msg);
         LinearLayout linearLayout = (LinearLayout) this.findViewById(R.id.LinearLayout);
         linearLayout.getBackground().setAlpha(210);
