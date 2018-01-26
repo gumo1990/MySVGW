@@ -14,10 +14,6 @@ import com.github.lzyzsd.jsbridge.BridgeWebView;
  * Created by topwolf on 2017/5/24.
  */
 
-/**
- * Created by topwolf on 2017/5/24.
- */
-
 public class MyJsBridgeWebView extends BridgeWebView {
 
     private ProgressBar mProgressBar;

@@ -13,6 +13,7 @@ import com.example.administrator.mysvgw.R;
 
 /**
  * Created by whq on 2018/1/4.
+ * 动画加载页面
  */
 
 public class LoadingPage extends FrameLayout {
@@ -29,9 +30,11 @@ public class LoadingPage extends FrameLayout {
     TextView tv_nonet;
     LinearLayout ll_nonet;
     LoadingListener loadinglistener;
-    public interface LoadingListener{
+
+    public interface LoadingListener {
         void onLoading();
     }
+
     public LoadingPage(Context context) {
         super(context);
         initView();
@@ -48,6 +51,10 @@ public class LoadingPage extends FrameLayout {
     }
 
     private void initView() {
+        if (isInEditMode()) {
+            //如果依赖的父窗体已经被干掉了，那么不展示loading
+            return;
+        }
         loadingView = createLoading();
         if (loadingView != null) {
             this.addView(loadingView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -69,7 +76,7 @@ public class LoadingPage extends FrameLayout {
         ll_nonet.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadinglistener.onLoading();;
+                loadinglistener.onLoading();
             }
         });
         return view;
@@ -138,7 +145,7 @@ public class LoadingPage extends FrameLayout {
         }
     }
 
-    public void setLoadinglistener(LoadingListener listener){
+    public void setLoadinglistener(LoadingListener listener) {
         this.loadinglistener = listener;
     }
 

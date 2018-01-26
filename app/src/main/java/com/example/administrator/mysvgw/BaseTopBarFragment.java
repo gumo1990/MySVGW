@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +31,11 @@ public abstract class BaseTopBarFragment extends Fragment implements View.OnClic
 
     public abstract void processClick(View view);
 
-
+    private SparseArray<View> mViews;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        mViews = new SparseArray<>();
         if(convertView == null){
             convertView = (ViewGroup) inflater.inflate(getContentView(), container, false);
         }
@@ -81,7 +82,18 @@ public abstract class BaseTopBarFragment extends Fragment implements View.OnClic
 
         }
     }
+    protected <E extends View> E findView(int viewId) {
+        if (convertView != null) {
+            E view = (E) mViews.get(viewId);
 
+            if (view == null) {
+                view = (E) convertView.findViewById(viewId);
+                mViews.put(viewId, view);
+            }
+            return view;
+        }
+        return null;
+    }
     public static int getStatusBarHeight(Activity activity){
         int statusBarHeight = 0;
         if(activity != null){
